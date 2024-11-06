@@ -1,0 +1,44 @@
+﻿@page
+@model SQLTest.Pages.FindEmployeesModel
+@{
+	ViewData["Title"] = "Find an Employee";
+}
+
+<div class="text-center">
+	<h1>Find Employee</h1>
+</div>
+
+<div>
+	<form method="post">
+		<h2>Employee Name</h2>
+		<div class = "form-group"> 
+			<label asp-for="Employee.Name"></label>
+			<input asp-for="Employee.Name" class="form-control"/>
+		</div>
+
+		<div asp-asp-validation-summary="All" class="text-danger"></div>
+		<button type="submit" class="btn btn-primary" style="margin-top:20px;">Search Employees</button>
+	
+	</form>
+</div>
+
+@if (Model.Employees != null && Model.Employees.Any())
+{
+	<h2>Search results</h2>
+	<ul>
+		@foreach (var emp in Model.Employees)
+		{
+			<li>@emp.Name - @emp.Title</li>
+		}
+	</ul>
+}
+else if (Model.Employees != null)
+{
+	<p>No Results Found</p>
+}
+
+<div style=" margin-top:20px;">
+	<a asp-page="/Index" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+		HomePage
+	</a>
+</div>

@@ -1,0 +1,68 @@
+﻿@page
+@model SQLTest.Pages.DeleteEmployeesModel
+@{
+	ViewData["Title"] = "Delete an Employee";
+}
+
+<div class="text-center">
+	<h1>Delete Employee</h1>
+</div>
+
+<div>
+	<button id="searchByNameButton" class="btn btn-primary" onclick="toggleSearch('name')">Search by Name</button>
+	<button id="searchByTitleButton" class="btn btn-primary" onclick="toggleSearch('title')">Search by Title</button>
+
+</div>
+
+<div id="searchByName" style="display:none">
+	<h2>Search Employee by Name</h2>
+	<form method="post">
+		<label asp-formaction="Employee.Name"/>
+		<input asp-for="Employee.Name" class="form-control"/>
+		<button type="submit" class="btn btn-primary" style="margin-top:20px">Search</button>
+	</form>
+</div>
+
+<div id="searchByTitle" style="display:none">
+	<h2>Search Employee by Title</h2>
+	<form method="post">
+		<label asp-formaction="Employee.Title" />
+		<input asp-for="Employee.Title" class="form-control" />
+		<button type="submit" class="btn btn-primary" style="margin-top:20px">Search</button>
+	</form>
+</div>
+
+<script>
+	function toggleSearch(type){
+		document.getElementById('searchByName').style.display = (type === 'name') ? 'block' : 'none';
+		document.getElementById('searchByTitle').style.display = (type === 'title') ? 'block' : 'none';
+
+	}
+</script>
+
+@if (Model.Employees != null && Model.Employees.Any())
+{
+	<h2>Search results</h2>
+	<ul>
+		@foreach (var emp in Model.Employees)
+		{
+			<li>
+				@emp.Name - @emp.Title
+				<form method="post" asp-page-handler="Delete" asp-route-id="@emp.Id" style="display:inline">
+					<button type ="submit" class="btn btn-danger btn-sm" style="margin-left:10px;">Delete</button>
+				</form>	
+			</li>
+
+		}
+	</ul>
+}
+else if (Model.Employees != null)
+{
+	<p>No Results Found</p>
+}
+
+<div style=" margin-top:20px;">
+	<a asp-page="/Index" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+		HomePage
+	</a>
+</div>

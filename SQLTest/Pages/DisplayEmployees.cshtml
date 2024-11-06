@@ -1,0 +1,21 @@
+﻿@page
+@model SQLTest.Pages.DisplayEmployeesModel
+@{
+	ViewData["Title"] = "Employee List";
+}
+
+<div class = "text-center">
+	<h1>Emplpoyee List</h1>
+	<ul>
+		@foreach (var employee in Model.Employees)
+		{
+			<li>@employee.Name - @employee.Title</li>
+		}
+	</ul>
+
+</div>
+<div style="margin-top:20px;">
+	<a asp-page="/Index" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+		HomePage
+	</a>
+</div>

@@ -1,0 +1,45 @@
+﻿@page
+@model SQLTest.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Hello, this is a test page to practice SQL!</p>
+
+    <h2>Select an action</h2>
+   
+        <div style = "margin-top: 10px; margin-bottom: 10px;">
+            <a asp-page="/DisplayEmployees" class=" "btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+                Display Employees
+            </a>
+        </div>
+
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+        <a asp-page="/AddEmployees" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+            Add Employees
+        </a>
+    </div>
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+        <a asp-page="/FindEmployees" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+            Find Employees
+        </a>
+    </div>
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+        <a asp-page="/DeleteEmployees" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+            Delete Employees
+        </a>
+    </div>
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+        <a asp-page="/UpdateEmployees" class=" " btn btn-primary" style="font-size: 20px; padding: 10px 20px;">
+            Update Employees
+        </a>
+    </div>
+    
+</div>
